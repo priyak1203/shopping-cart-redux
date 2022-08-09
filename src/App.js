@@ -5,7 +5,7 @@ import { cartItems } from './data';
 
 // initial state
 const initialState = {
-  count: 0,
+  count: 73,
 };
 
 // reducer
@@ -17,10 +17,12 @@ function reducer(state, action) {
 // store
 const store = createStore(reducer, initialState);
 
+console.log(store.getState());
+
 function App() {
   return (
     <main>
-      <Navbar />
+      <Navbar items={store.getState()} />
       <CartContainer cart={cartItems} />
     </main>
   );
