@@ -8,8 +8,8 @@ import reducer from './reducer';
 // initial state
 const initialState = {
   cart: cartItems,
-  total: 300,
-  amount: 2,
+  total: 0,
+  amount: 0,
 };
 
 // store
