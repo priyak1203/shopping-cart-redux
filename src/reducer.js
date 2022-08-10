@@ -11,6 +11,16 @@ function reducer(state, action) {
         cart: state.cart.filter((item) => item.id !== action.payload.id),
       };
     }
+
+    case INCREASE: {
+      const tempCart = state.cart.map((cartItem) => {
+        if (cartItem.id === action.payload.id) {
+          cartItem = { ...cartItem, amount: cartItem.amount + 1 };
+        }
+        return cartItem;
+      });
+      return { ...state, cart: tempCart };
+    }
     default:
       return state;
   }
