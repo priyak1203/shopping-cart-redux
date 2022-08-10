@@ -9,7 +9,7 @@ import reducer from './reducer';
 const initialState = {
   cart: cartItems,
   total: 0,
-  amount: 0,
+  amount: 2,
 };
 
 // store
