@@ -1,14 +1,16 @@
-import { CLEAR_CART, DECREASE, INCREASE } from './actions';
+import { CLEAR_CART, DECREASE, INCREASE, REMOVE } from './actions';
 
 function reducer(state, action) {
-  // if (action.type === CLEAR_CART) {
-  //   return { ...state, cart: [] };
-  // }
-  // return state;
-
   switch (action.type) {
     case CLEAR_CART:
       return { ...state, cart: [] };
+
+    case REMOVE: {
+      return {
+        ...state,
+        cart: state.cart.filter((item) => item.id !== action.payload.id),
+      };
+    }
     default:
       return state;
   }

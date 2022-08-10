@@ -1,13 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { REMOVE } from '../actions';
 
-const CartItem = ({ amount, img, price, title }) => {
+const CartItem = ({ amount, img, price, title, remove }) => {
   return (
     <article className="cart-item">
       <img src={img} alt={title} />
       <div>
         <h4>{title}</h4>
         <h4 className="item-price">${price}</h4>
-        <button className="remove-btn">remove</button>
+        <button className="remove-btn" onClick={() => remove()}>
+          remove
+        </button>
       </div>
       <div className="amtBtn-container">
         {/* increase amount */}
@@ -29,4 +33,17 @@ const CartItem = ({ amount, img, price, title }) => {
   );
 };
 
-export default CartItem;
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const { id } = ownProps;
+  return {
+    remove: () =>
+      dispatch({
+        type: REMOVE,
+        payload: {
+          id,
+        },
+      }),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(CartItem);
