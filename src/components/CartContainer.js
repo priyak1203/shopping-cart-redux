@@ -7,7 +7,7 @@ import CartItem from './CartItem';
 const CartContainer = ({ cart = [], total, dispatch }) => {
   useEffect(() => {
     dispatch({ type: GET_TOTALS });
-  });
+  }, [cart]);
 
   if (cart.length === 0) {
     return (
