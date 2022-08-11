@@ -6,8 +6,16 @@ import {
   REMOVE,
   TOGGLE_AMOUNT,
 } from './actions';
+import { cartItems } from './data';
 
-function reducer(state, action) {
+// initial state
+const initialState = {
+  cart: cartItems,
+  total: 0,
+  amount: 0,
+};
+
+function reducer(state = initialState, action) {
   switch (action.type) {
     case CLEAR_CART:
       return { ...state, cart: [] };
